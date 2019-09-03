@@ -1,7 +1,6 @@
 # ProjectManagementApp
 Project management app with trello like boards using Angular and .NET Core 2.2.
 
-## Example
 [Demo](https://wd-project-management-app.herokuapp.com/)
 
 ## To run the project
