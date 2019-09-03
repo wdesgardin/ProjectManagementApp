@@ -1,0 +1,3 @@
+{
+  "comment": "empty package.json, workaround for automatic deploy with heroku. see: https://github.com/jincod/dotnetcore-buildpack/issues/51"
+}
