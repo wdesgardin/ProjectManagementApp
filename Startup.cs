@@ -83,7 +83,7 @@ namespace ProjectManagementApp
             var password = userInfo[1];
             var db = databaseUri.LocalPath.TrimStart('/');
 
-            return $"server={server};port={port};database={db};user Id={user};password={password};sslmode=require;trust server certificate=true;";
+            return $"Server={server};Port={port};Database={db};User Id={user};Password={password};Sslmode=Require;Trust Server Certificate=true;";
         }
     }
 }
