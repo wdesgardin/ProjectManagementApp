@@ -1,10 +1,13 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectManagementApp.Persistence;
 
 namespace ProjectManagementApp
 {
@@ -20,8 +23,8 @@ namespace ProjectManagementApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options => options.UseNpgsql(GetDbConnectionString()));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -66,6 +69,21 @@ namespace ProjectManagementApp
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+        }
+
+        private string GetDbConnectionString()
+        {
+            var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            var databaseUri = new Uri(databaseUrl);
+            var userInfo = databaseUri.UserInfo.Split(':');
+
+            var server = databaseUri.Host;
+            var port = databaseUri.Port;
+            var user = userInfo[0];
+            var password = userInfo[1];
+            var db = databaseUri.LocalPath.TrimStart('/');
+
+            return $"server={server};port={port};database={db};user Id={user};password={password};sslmode=require;trust server certificate=true;";
         }
     }
 }
