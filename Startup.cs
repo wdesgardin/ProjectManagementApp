@@ -1,4 +1,5 @@
 using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +8,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectManagementApp.Core;
+using ProjectManagementApp.Mapping;
 using ProjectManagementApp.Persistence;
 
 namespace ProjectManagementApp
@@ -23,7 +26,14 @@ namespace ProjectManagementApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var mappingConfig = new MapperConfiguration(mc => mc.AddProfile(new MappingProfile()));
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddDbContext<AppDbContext>(options => options.UseNpgsql(GetDbConnectionString()));
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<IBoardRepository,BoardRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
