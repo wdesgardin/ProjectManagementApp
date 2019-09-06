@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h6 class="modal-title">Create a column</h6>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #columnForm="ngForm">
+    <div class="form-group">
+      <label for="title">Column title</label>
+      <input
+        [(ngModel)]="column.title"
+        type="text"
+        name="title"
+        id="title"
+        class="form-control"
+        required
+        #title="ngModel"
+        [class.is-invalid]="title.touched && title.invalid"
+      />
+      <div class="invalid-feedback">
+        Please enter a title.
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="activeModal.close(column)"
+      [disabled]="columnForm.invalid"
+    >
+      Create column
+    </button>
+  </form>
+</div>

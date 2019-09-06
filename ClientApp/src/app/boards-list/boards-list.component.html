@@ -4,13 +4,13 @@
     >Create board</a
   >
   <div class="mt-3">
-    <div class="card bg-primary text-white" *ngFor="let board of boards">
+    <a class="card bg-primary text-white" *ngFor="let board of boards" [routerLink]="['/boards/' + board.id]">
       <div class="card-body">
         <h5 class="card-title">{{ board.name }}</h5>
         <p class="card-text">
           {{ board.description }}
         </p>
       </div>
-    </div>
+    </a>
   </div>
 </div>
