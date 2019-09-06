@@ -13,6 +13,9 @@ namespace ProjectManagementApp.Mapping
 
             CreateMap<CreateColumnResource, Column>();
             CreateMap<Column, ColumnResource>();
+
+            CreateMap<CreateCardResource, Card>();
+            CreateMap<Card, CardResource>();
         }
     }
 }

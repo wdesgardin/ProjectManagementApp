@@ -2,19 +2,16 @@
   <h2>{{ board?.name }}</h2>
   <p>{{ board?.description }}</p>
 
-  <div
-    *ngFor="let col of columns"
-    class="bg-light rounded border mr-3 p-3"
-    style="width: 22em; height: 80vh; float:left;"
-  >
-    <h6>{{ col.title }}</h6>
-  </div>
+  <app-column *ngFor="let col of columns" [column]="col" style="width: 22em; height: 80vh; float:left;">
+
+  </app-column>
 
   <a
     (click)="createColumn()"
     class="rounded text-center mr-3"
     style="border: dashed 1px #dee2e6;width: 22em; height: 6em; line-height: 6em; float:left;"
   >
-    Add a column
+    <i class="fa fa-plus"></i>
+     Add a column
   </a>
 </div>

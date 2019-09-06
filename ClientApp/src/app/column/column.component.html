@@ -1,3 +1,17 @@
-<div class="bg-light">
-  <h3>{{column.title}}</h3>
+<div class="bg-light rounded border mr-3 p-2">
+  <button
+    class="float-right text-secondary"
+    style="border: 0; background: transparent;"
+    (click)="toggleCardForm()"
+  >
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+  <h6>
+    <span class="badge badge-secondary">{{ cards.length }}</span>
+    {{ column.title }}
+  </h6>
+  <ng-template #formContainer></ng-template>
+  <div class="bg-white border rounded p-2 mt-2" *ngFor="let card of cards">
+    {{ card.content }}
+  </div>
 </div>

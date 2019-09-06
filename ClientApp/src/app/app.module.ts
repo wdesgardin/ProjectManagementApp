@@ -12,6 +12,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { BoardComponent } from "./board/board.component";
 import { ColumnComponent } from "./column/column.component";
 import { ColumnModalComponent } from './column-modal/column-modal.component';
+import { CardFormComponent } from './card-form/card-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ColumnModalComponent } from './column-modal/column-modal.component';
     NavbarComponent,
     BoardComponent,
     ColumnComponent,
-    ColumnModalComponent
+    ColumnModalComponent,
+    CardFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -37,6 +39,6 @@ import { ColumnModalComponent } from './column-modal/column-modal.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ColumnModalComponent]
+  entryComponents: [ColumnModalComponent, CardFormComponent]
 })
 export class AppModule {}

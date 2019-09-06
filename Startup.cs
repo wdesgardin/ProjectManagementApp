@@ -33,6 +33,7 @@ namespace ProjectManagementApp
             services.AddDbContext<AppDbContext>(options => options.UseNpgsql(GetDbConnectionString()));
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped<IBoardRepository,BoardRepository>();
+            services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<IColumnRepository, ColumnRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

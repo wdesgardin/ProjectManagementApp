@@ -1,0 +1,23 @@
+<form #cardForm="ngForm">
+  <textarea
+    name="content"
+    id="content"
+    class="form-control mb-2"
+    rows="2"
+    [(ngModel)]="card.content"
+    #content="ngModel"
+    required
+  ></textarea>
+  <div class="d-flex">
+    <button
+      class="btn btn-primary flex-item-equal mr-1"
+      (click)="submit()"
+      [disabled]="cardForm.invalid"
+    >
+      Add
+    </button>
+    <button class="btn btn-secondary flex-item-equal ml-1" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+</form>

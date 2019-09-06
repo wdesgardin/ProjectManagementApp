@@ -1,0 +1,4 @@
+.flex-item-equal {
+  flex-grow: 1;
+  flex-basis: 0;
+}
