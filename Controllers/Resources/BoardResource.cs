@@ -1,6 +1,6 @@
 namespace ProjectManagementApp.Controllers.Resources
 {
-    public class BoardResource
+    public class BoardResource : TimeStampedResource
     {
         public int Id { get; set; }
         public string Name { get; set; }

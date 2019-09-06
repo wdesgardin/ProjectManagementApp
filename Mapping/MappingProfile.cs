@@ -10,6 +10,9 @@ namespace ProjectManagementApp.Mapping
         {
             CreateMap<CreateBoardResource,Board>();
             CreateMap<Board, BoardResource>();
+
+            CreateMap<CreateColumnResource, Column>();
+            CreateMap<Column, ColumnResource>();
         }
     }
 }

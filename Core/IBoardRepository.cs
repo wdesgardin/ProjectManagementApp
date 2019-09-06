@@ -8,5 +8,6 @@ namespace ProjectManagementApp.Core
     {
          void Add(Board board);
          Task<IEnumerable<Board>> GetBoards();
+         Task<Board> GetById(int id);
     }
 }
