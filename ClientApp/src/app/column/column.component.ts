@@ -11,7 +11,6 @@ import { Column } from "../models/column.model";
 import { CardFormComponent } from "../card-form/card-form.component";
 import { Card } from "../models/card.model";
 import { CardService } from "../services/card.service";
-import { createViewContainerData } from "@angular/core/src/view/refs";
 
 @Component({
   selector: "app-column",
