@@ -18,4 +18,8 @@ export class BoardService {
   getAll(): Observable<Board[]> {
     return this.http.get<Board[]>(this.url);
   }
+
+  get(id: number): Observable<Board> {
+    return this.http.get<Board>(`${this.url}/${id}`);
+  }
 }

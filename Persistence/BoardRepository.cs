@@ -23,5 +23,10 @@ namespace ProjectManagementApp.Persistence
         {
             return await _dbContext.Boards.ToListAsync();
         }
+
+        public async Task<Board> GetById(int id)
+        {
+            return await _dbContext.Boards.FirstOrDefaultAsync(b => b.Id == id);
+        }
     }
 }

@@ -40,5 +40,19 @@ namespace ProjectManagementApp.Controllers
 
             return Ok(resources);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBoard(int id)
+        {
+            var board = await _boardRepository.GetById(id);
+
+            if (board == null)
+            {
+                return NotFound();
+            }
+
+            var resource = _mapper.Map<BoardResource>(board);
+            return Ok(resource);
+        }
     }
 }
