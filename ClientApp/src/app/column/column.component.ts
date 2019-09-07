@@ -11,6 +11,11 @@ import { Column } from "../models/column.model";
 import { CardFormComponent } from "../card-form/card-form.component";
 import { Card } from "../models/card.model";
 import { CardService } from "../services/card.service";
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem
+} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-column",
@@ -69,5 +74,23 @@ export class ColumnComponent implements OnInit {
     this.cardForm.destroy();
     this.cardForm = null;
     this.container.clear();
+  }
+
+  cardDropped(event: CdkDragDrop<any>) {
+    console.log(event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }

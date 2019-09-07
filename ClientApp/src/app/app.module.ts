@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
+import { DragDropModule } from "@angular/cdk/drag-drop"
 
 import { AppComponent } from "./app.component";
 import { BoardsListComponent } from "./boards-list/boards-list.component";
@@ -35,7 +36,8 @@ import { CardFormComponent } from './card-form/card-form.component';
       { path: "boards/new", component: BoardFormComponent, pathMatch: "full" },
       { path: "boards/:id", component: BoardComponent, pathMatch: "full" }
     ]),
-    NgbModalModule
+    NgbModalModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -11,7 +11,10 @@
     {{ column.title }}
   </h6>
   <ng-template #formContainer></ng-template>
-  <div class="bg-white border rounded p-2 mt-2" *ngFor="let card of cards">
-    {{ card.content }}
+  <div cdkDropList [cdkDropListData]="cards" (cdkDropListDropped)="cardDropped($event)" style="min-height: 20px;">
+    <div class="bg-white border rounded p-2 mt-2" *ngFor="let card of cards" cdkDrag>
+      {{ card.content }}
+      <!-- <div class="bg-secondary border rounded" style="height: 20px;" *cdkDragPlaceholder></div> -->
+    </div>
   </div>
 </div>
