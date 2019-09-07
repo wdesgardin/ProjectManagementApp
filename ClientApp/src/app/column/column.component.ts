@@ -21,7 +21,7 @@ export class ColumnComponent implements OnInit {
   @Input("column") column: Column;
   cards: Card[] = [];
 
-  @ViewChild("formContainer", { read: ViewContainerRef })
+  @ViewChild("formContainer", { static: true, read: ViewContainerRef })
   container: ViewContainerRef;
   cardForm: ComponentRef<CardFormComponent>;
 
@@ -36,13 +36,6 @@ export class ColumnComponent implements OnInit {
       .subscribe(cards => (this.cards = cards));
   }
 
-  displayForm() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      CardFormComponent
-    );
-    this.cardForm = this.container.createComponent(componentFactory);
-  }
-
   toggleCardForm() {
     if (!this.cardForm) {
       this.addForm();
@@ -52,10 +45,13 @@ export class ColumnComponent implements OnInit {
   }
 
   private addForm() {
+    this.container.clear();
+
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       CardFormComponent
     );
     this.cardForm = this.container.createComponent(componentFactory);
+
     this.cardForm.instance.canceled.subscribe(() => this.removeForm());
     this.cardForm.instance.submitted.subscribe(card => this.createCard(card));
   }
@@ -70,6 +66,7 @@ export class ColumnComponent implements OnInit {
   private removeForm() {
     this.cardForm.instance.canceled.unsubscribe();
     this.cardForm.instance.submitted.unsubscribe();
+    this.cardForm.destroy();
     this.cardForm = null;
     this.container.clear();
   }
