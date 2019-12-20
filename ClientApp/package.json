@@ -28,7 +28,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.9",
     "font-awesome": "^4.7.0",
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "popper.js": "^1.15.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
