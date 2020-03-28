@@ -1,19 +1,19 @@
-<div class="p-3" style="min-height: 100%; flex: 1 1 auto;">
+<div class="p-3 d-flex" style="flex: auto; flex-direction: column;">
   <h2>{{ board?.name }}</h2>
   <p>{{ board?.description }}</p>
 
-  <div cdkDropListGroup style="flex: 1 1 auto; min-height: 100%;">
+  <div cdkDropListGroup style="flex: auto; display: flex; height: 0;">
     <app-column
       *ngFor="let col of columns"
       [column]="col"
-      style="min-width: 22em; max-width: 22em; float:left;"
+      style="flex: 0 1 auto; display: flex;"
     >
     </app-column>
 
     <a
       (click)="createColumn()"
       class="rounded text-center mr-3"
-      style="border: dashed 1px #dee2e6;width: 22em; height: 6em; line-height: 6em; float:left;"
+      style="border: dashed 1px #dee2e6;width: 22em; height: 6em; line-height: 6em; display: inline-block;"
     >
       <i class="fa fa-plus"></i>
       Add a column

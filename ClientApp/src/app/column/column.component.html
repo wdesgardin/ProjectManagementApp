@@ -1,20 +1,37 @@
-<div class="bg-light rounded border mr-3 p-2">
-  <button
-    class="float-right text-secondary"
-    style="border: 0; background: transparent;"
-    (click)="toggleCardForm()"
-  >
-    <i class="fa fa-plus" aria-hidden="true"></i>
-  </button>
-  <h6>
-    <span class="badge badge-secondary">{{ cards.length }}</span>
-    {{ column.title }}
-  </h6>
+<div
+  class="bg-light rounded border mr-3 p-2 d-flex"
+  style="flex-direction: column; min-width: 22em; max-width: 22em;"
+  cdkDropList
+  [cdkDropListData]="cards"
+  (cdkDropListDropped)="cardDropped($event)"
+>
+  <div>
+    <button
+      class="float-right text-secondary"
+      style="border: 0; background: transparent;"
+      (click)="toggleCardForm()"
+    >
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+    <h6>
+      <span class="badge badge-secondary">{{ cards.length }}</span>
+      {{ column.title }}
+    </h6>
+  </div>
   <ng-template #formContainer></ng-template>
-  <div cdkDropList [cdkDropListData]="cards" (cdkDropListDropped)="cardDropped($event)" style="min-height: 20px;">
-    <div class="bg-white border rounded p-2 mt-2" *ngFor="let card of cards" cdkDrag>
+  <div style="overflow-y: auto; flex: auto;">
+    <div
+      class="bg-white border rounded p-2 mt-2"
+      style="overflow-wrap: break-word;"
+      *ngFor="let card of cards"
+      cdkDrag
+    >
       {{ card.content }}
-      <!-- <div class="bg-secondary border rounded" style="height: 20px;" *cdkDragPlaceholder></div> -->
+      <div
+        class="bg-secondary border rounded mt-2"
+        style="height: 40px; "
+        *cdkDragPlaceholder
+      ></div>
     </div>
   </div>
 </div>
